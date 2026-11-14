@@ -10,8 +10,8 @@
 
 Пример использования:
 ```
-ciadpi --disorder 1 --auto=torst --tlsrec 1+s
-ciadpi --fake -1 --ttl 8
+./bbyedpi --disorder 1 --auto=torst --tlsrec 1+s
+./bbyedpi --fake -1 --ttl 8
 ```
 
 ------
@@ -337,17 +337,10 @@ TCP может отсылать данные вне основного пото�
 
 ------
 ### Сборка
-Для сборки понадобится:
-`make`, `gcc/clang` для Linux, `mingw` для Windows
+Для сборки понадобятся CMake и компилятор C (`gcc`/`clang` для Linux или MinGW для Windows).
 
-* Linux: `make`
-* Windows: `make windows CC=x86_64-w64-mingw32-gcc`
-
-------
-### Docker образ
-
-Docker образ выкладывается на [DockerHub](https://hub.docker.com/r/hufrea/byedpi).
-Пример конфигурации контейнера можно найти в [dist/docker](dist/docker).
+* Linux: `cmake -S . -B build && cmake --build build`
+* Windows (кросс-компиляция): `cmake -S . -B build -DCMAKE_SYSTEM_NAME=Windows -DCMAKE_C_COMPILER=x86_64-w64-mingw32-gcc && cmake --build build`
 
 ------
 ### Дополнительная информация о DPI, источники идей

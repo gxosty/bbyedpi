@@ -10,8 +10,8 @@ The program is a local SOCKS proxy server.
 
 Usage example:
 ```
-ciadpi --disorder 1 --auto=torst --tlsrec 1+s
-ciadpi --fake -1 --ttl 8
+./bbyedpi --disorder 1 --auto=torst --tlsrec 1+s
+./bbyedpi --fake -1 --ttl 8
 ```
 
 ------
@@ -337,17 +337,10 @@ Override the fake packet for HTTP
 
 ------
 ### Building
-To build you will need:
-`make`, `gcc/clang` for Linux, `mingw` for Windows
+To build you will need CMake and a C compiler (`gcc`/`clang` for Linux or MinGW for Windows).
 
-* Linux: `make`
-* Windows: `make windows CC=x86_64-w64-mingw32-gcc`
-
-------
-### Docker image
-
-The Docker image is published on [DockerHub](https://hub.docker.com/r/hufrea/byedpi).
-An example container configuration can be found in [dist/docker](dist/docker).
+* Linux: `cmake -S . -B build && cmake --build build`
+* Windows (cross-compile): `cmake -S . -B build -DCMAKE_SYSTEM_NAME=Windows -DCMAKE_C_COMPILER=x86_64-w64-mingw32-gcc && cmake --build build`
 
 ------
 ### Additional information about DPI, sources of ideas
